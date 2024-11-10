@@ -15,4 +15,8 @@ function getComputerChoice() {
     }
     console.log(randomNumber);
 }
-getComputerChoice()
+getComputerChoice();
+
+function getHumanChoice() {
+    
+}
