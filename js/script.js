@@ -3,6 +3,11 @@ console.log("hello world");
 const rocks = "rock";
 const papers = "papers";
 const scissors = "scissor";
+// score variables
+let humanScore = 0;
+let computerScore = 0;
+
+
 // Get the computers choice
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -16,7 +21,16 @@ function getComputerChoice() {
     console.log(randomNumber);
 }
 getComputerChoice();
-
+// users choice of selection
 function getHumanChoice() {
-    
+    let userPrompt = prompt("Select Rock, paper, or scissor");
+    if(userPrompt === "rock") {
+        console.log(rocks)
+    } else if(userPrompt === "paper") {
+        console.log(papers)
+    } else {
+        console.log(scissors)
+    }
 }
+
+getHumanChoice();
