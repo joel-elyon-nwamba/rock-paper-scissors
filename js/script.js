@@ -1,59 +1,46 @@
-// Global variables
-const rocks = "rock";
-const papers = "paper";
-const scissors = "scissors";
+// Creaet variable to keep score 
+let playerScore = 0;
+let computScore = 0;
 
-// Score variables
-let humanScore = 0;
-let computerScore = 0;
+// the button in html 
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorsBtn = document.getElementById("scissors");
 
-// Get the computer's choice
-function getComputerChoice() {
-    let randomNumber = Math.floor(Math.random() * 3);
-    if (randomNumber === 0) {
-        return rocks;
-    } else if (randomNumber === 1) {
-        return papers;
+// players Option
+const playersOption = [rockBtn, paperBtn, scissorsBtn];
+
+// Computers option
+const computersOption = ["rock", "paper", "scissors"];
+
+// Display the socres
+const displayScore1 = document.getElementById("score1");
+const displayScore2 = document.getElementById("score2");
+
+//Create a function for a computers choice 
+const computersChoice = () => {
+    const randomArray = Math.floor(Math.random() * computersOption.length );
+    console.log(randomArray)
+    if(randomArray === 0) {
+        return "rock";
+    } else if(randomArray === 1) {
+        return "paper";
     } else {
-        return scissors;
+        return "scissors";
     }
 }
 
-// Get the human's choice
-function getHumanChoice() {
-    let userPrompt = prompt("Select rock, paper, or scissors").toLowerCase();
-    while (![rocks, papers, scissors].includes(userPrompt)) {
-        userPrompt = prompt("Invalid choice. Please select rock, paper, or scissors").toLowerCase();
-    }
-    return userPrompt;
-}
-
-// Playing a round
-function playRound(humanChoice, computerChoice) {
-    console.log(`You chose: ${humanChoice}`);
-    console.log(`Computer chose: ${computerChoice}`);
-
-    if (humanChoice === computerChoice) {
-        console.log("It's a tie!");
-        return "tie";
-    } else if (
-        (humanChoice === rocks && computerChoice === scissors) ||
-        (humanChoice === papers && computerChoice === rocks) ||
-        (humanChoice === scissors && computerChoice === papers)
-    ) {
-        console.log("You win this round!");
-        humanScore++;
-        return "human";
+computersChoice()
+ 
+// PlayersChoice function created 
+const playersChoice = () => {
+    if(rockBtn === "rock") {
+        return "rock";
+    } else if(paperBtn === "paper") {
+        return "paper";
+    } else if(scissorsBtn === "scissors"){
+        return "scissors"
     } else {
-        console.log("Computer wins this round!");
-        computerScore++;
-        return "computer";
+        return "Something is wrong please pick from the options provided"
     }
 }
-
-// Run the game
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
-playRound(humanChoice, computerChoice);
-
-console.log(`Scores - Human: ${humanScore}, Computer: ${computerScore}`);
