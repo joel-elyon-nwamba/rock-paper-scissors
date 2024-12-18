@@ -1,46 +1,49 @@
-// Creaet variable to keep score 
-let playerScore = 0;
-let computScore = 0;
-
-// the button in html 
-const rockBtn = document.getElementById("rock");
-const paperBtn = document.getElementById("paper");
-const scissorsBtn = document.getElementById("scissors");
-
-// players Option
-const playersOption = [rockBtn, paperBtn, scissorsBtn];
-
-// Computers option
-const computersOption = ["rock", "paper", "scissors"];
-
-// Display the socres
+// Grab the DOM for buttons, Score displaye
+// Display Scores 
 const displayScore1 = document.getElementById("score1");
 const displayScore2 = document.getElementById("score2");
 
-//Create a function for a computers choice 
-const computersChoice = () => {
-    const randomArray = Math.floor(Math.random() * computersOption.length );
-    console.log(randomArray)
-    if(randomArray === 0) {
+const rockBtn = document.getElementById("rock");
+const paperBtn = document.getElementById("paper");
+const scissorBtn = document.getElementById("scissors");
+console.log(rockBtn.id);
+console.log(paperBtn.id);
+console.log(scissorBtn.id);
+// Reset Game
+const resetGame= document.getElementById("reset-game");
+
+// Scoreboard when player or computer wins 
+let computerScore = 0;
+let playerScore = 0;
+
+// Function for the players choice
+const playersChoice = (e) => {
+    if(e.target.id === rockBtn) {
         return "rock";
-    } else if(randomArray === 1) {
-        return "paper";
+    } else if(e.target.id === paperBtn.id) {
+        return "paper"
+    } else if(e.target.id === scissorBtn.id) {
+        return "scissor"
     } else {
-        return "scissors";
+        return "This is an error please enter the correct info for the game to work"
     }
 }
 
-computersChoice()
- 
-// PlayersChoice function created 
-const playersChoice = () => {
-    if(rockBtn === "rock") {
-        return "rock";
-    } else if(paperBtn === "paper") {
-        return "paper";
-    } else if(scissorsBtn === "scissors"){
-        return "scissors"
-    } else {
-        return "Something is wrong please pick from the options provided"
-    }
+console.log(playersChoice("rock"));
+
+// Computer's random spot 
+const computerChoice = () => {
+let randomNumber = Math.floor(Math.random() * 3) + 1;
+console.log(randomNumber)
+if(randomNumber === 1) {
+return "rock";
+} else if(randomNumber === 2) {
+return "paper";
+} else if(randomNumber === 3) {
+return "scissors";
+} else {
+return "Wrong task"
 }
+}
+
+console.log(computerChoice())
